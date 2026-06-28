@@ -1,0 +1,358 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #FEFFF5;
+    overflow-x: hidden;
+}
+
+#particles-js {
+    position: fixed;
+    z-index: 2;
+    /* 修改：置于背景和文字之间，让落叶能在模糊背景上方漂浮 */
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    /* 避免粒子层阻挡点击 */
+}
+
+/*==============================
+==========Header (重叠 & 固定)=====*/
+.header {
+    top: 0;
+    left: 0;
+    width: 100%;
+    aspect-ratio: 1440 / 73;
+    display: flex;
+    align-items: center;
+    padding-left: calc(120vw/14.4);
+    transition: background 0.4s ease;
+    gap: calc(440vw/14.4);
+    position: relative;
+    z-index: 20;
+}
+
+.back-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    flex-shrink: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.back-btn:hover {
+    opacity: 0.7;
+}
+
+.back-btn img {
+    width: clamp(20px, calc(32vw/14.4), 64px);
+    height: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.back-btn p {
+    color: #9AA536;
+    font-family: "Noto Sans SC";
+    font-size: clamp(14px, calc(20vw/14.4), 40px);
+    font-weight: 500;
+}
+
+.header-title-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc(10vw/14.4);
+}
+
+.gem-wrapper {
+    perspective: 300px;
+    display: inline-block;
+}
+
+.deco-jewerly {
+    width: clamp(16px, calc(24vw / 14.4), 48px);
+    animation: gemSpin 2.5s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+    backface-visibility: hidden;
+}
+
+@keyframes gemSpin {
+    0% {
+        transform: rotateY(0deg);
+    }
+
+    20% {
+        transform: rotateY(360deg);
+    }
+
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+.header-title {
+    color: #9AA536;
+    text-align: center;
+    font-family: "Emblema One";
+    font-size: clamp(24px, calc(36vw/14.4), 72px);
+    font-weight: 400;
+}
+
+/*==============================
+==============TOP==============*/
+.top {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+/* 新增：包裹背景，使其成为全屏固定层 */
+.top-bg-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    /* 强制覆盖全屏，避免下方滚动露出底色 */
+    z-index: 1;
+}
+
+.top-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+/* 新增：变暗及模糊的遮罩层 */
+.top-bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(9.8px);
+    -webkit-backdrop-filter: blur(9.8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.top-bg-overlay.active {
+    opacity: 1;
+}
+
+.top-lace {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    width: 100%;
+}
+
+.top-character {
+    position: absolute;
+    z-index: 3;
+    width: clamp(240px, calc(394.27vw/14.4), 800px);
+    left: 35%;
+    top: 30%;
+}
+
+/*==============================
+==============Story==============*/
+.story {
+    padding: 5% 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    position: relative;
+    z-index: 10;
+    /* 确保内容在被固定的背景之上 */
+}
+
+.story-title {
+    width: clamp(103.779px, calc(115.31vw/14.4), 230.62px);
+}
+
+.story-text {
+    text-align: center;
+    font-family: "Noto Serif SC";
+    font-size: clamp(13px, calc(16vw/14.4), 32px);
+    font-style: normal;
+    font-weight: 500;
+    line-height: 250%;
+    letter-spacing: calc(1.92vw/14.4);
+
+    /* 修改：利用背景裁剪和CSS变量实现推进阅读效果 */
+    --read-progress: 0%;
+    background: linear-gradient(to bottom, #FFF var(--read-progress), rgba(255, 255, 255, 0.3) calc(var(--read-progress) + 15%));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/*==============================
+==============profile==============*/
+.profile {
+    padding: 5% 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    position: relative;
+    z-index: 10;
+}
+
+.profile-title {
+    width: clamp(135.414px, calc(150.46vw/14.4), 300.92px);
+}
+
+.profile-wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: calc(120vw/14.4);
+}
+
+.profile-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.profile-img {
+    width: clamp(160px, calc(198vw/14.4), 400px);
+}
+
+.mai-name {
+    width: clamp(91.928px, calc(114.91vw/14.4), 229.82px);
+}
+
+.than-name {
+    width: clamp(122.976px, calc(153.72vw/14.4), 307.44px);
+}
+
+.profile-text {
+    display: block;
+    width: calc(351vw/14.4);
+    height: fit-content;
+    color: #FFF;
+    text-shadow: 0 4px 4px rgba(255, 255, 255, 0.28);
+    font-family: "Noto Serif SC";
+    font-size: clamp(13px, calc(13vw/14.4), 26px);
+    font-weight: 500;
+    line-height: 261.538%;
+    letter-spacing: 1.04px;
+}
+
+/*==================================================
+ギャラリーのためのcss
+===================================*/
+.gallery-wrapper{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:calc(64vw/14.4);
+}
+.gallery {
+    width:80%;
+    columns:3;
+    padding:calc(32vw/14.4);
+    margin: 0;
+}
+
+.gallery li {
+    margin-bottom:calc(32vw/14.4);
+    list-style: none;
+}
+
+.gallery img {
+    width: 100%;
+    height: auto;
+    vertical-align: bottom;
+}
+
+@media only screen and (max-width: 768px) {
+    .gallery {
+        columns: 2;
+    }
+}
+/*===========================
+=======Footer==========*/
+.footer img{
+    width:100%;
+}
+/*===========================
+=======Respondsive==========*/
+@media screen and (max-width:1000px) {
+    .profile-wrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 120px;
+    }
+
+    .profile-text {
+        width: calc(500vw/10);
+    }
+}
+
+@media screen and (max-width:700px) {
+    .header {
+        padding-left: calc(32vw/7.0);
+        gap: calc(220vw/7.0);
+    }
+
+    .profile {
+        padding: 15% 0;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .header {
+        gap: calc(160vw/6.0);
+    }
+
+    .top-character {
+        left: 30%;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .header {
+        padding: 13px;
+        gap: calc(130vw/5.0);
+    }
+
+    .top-character {
+        left: 25%;
+    }
+
+    .profile-text {
+        width: calc(300vw/5);
+    }
+}
+
+@media screen and (max-width:400px) {
+    .header {
+        gap: calc(90vw/4.0);
+    }
+
+    .top-character {
+        left: 20%;
+    }
+}

@@ -1,0 +1,337 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #000000;
+    overflow-x: hidden;
+}
+/*==============================
+==========Header (重叠 & 固定)=====*/
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding-left: calc(120vw/14.4);
+    transition: background 0.4s ease;
+    padding-top: 2.5%;
+}
+
+.header.scrolled {
+    padding-top: 0;
+}
+
+.back-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    flex-shrink: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+.back-btn:hover {
+    opacity: 0.7;
+}
+.back-btn img {
+    width: calc(75vw/14.4);
+    height: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.back-btn p {
+    color: #ffffff;
+    font-family: "Noto Sans SC";
+    font-size: clamp(16px, 1.2vw, 20px);
+    font-weight: 500;
+}
+/*==============================
+=============Top===============*/
+.top {
+    width: 100%;
+    position: relative;
+    display: flex;
+}
+.top-bg {
+    width: 100%;
+}
+.top-bg-sp {
+    display: none;
+}
+.top-blood {
+    position: absolute;
+    z-index: 2;
+    opacity: 0;
+    will-change: transform, opacity, filter;
+}
+.top-blood.blood-left {
+    width: calc(335vw/14.4);
+}
+.top-blood.blood-right {
+    width: calc(320vw/14.4);
+    right: 6%;
+    top: 68%;
+}
+
+.top-blood.blood-left.animate {
+    animation: bloodSplat 0.45s cubic-bezier(0.5, 0, 1, 0.3) forwards;
+}
+
+.top-blood.blood-right.animate {
+    animation: bloodSplat 0.45s cubic-bezier(0.5, 0, 1, 0.3) 0.5s forwards;
+}
+
+@keyframes bloodSplat {
+    0% {
+        opacity: 0;
+        filter: blur(8px);
+        transform: scale(1.5);
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0);
+        transform: scale(1);
+    }
+}
+
+/*==============================
+=============Story===============*/
+.story {
+    width: 100%;
+    aspect-ratio: 1440 / 399;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    gap: 35px;
+}
+.story-title {
+    color: #FFF;
+    text-align: center;
+    font-family: "Emblema One";
+    font-size: clamp(16px,calc(40vw/14.4),80px);
+    font-weight: 400;
+}
+.story-text {
+    color: #FFF;
+    text-align: center;
+    font-family: "Noto Sans SC";
+    font-size: clamp(13px,calc(18vw/14.4),40px);
+    font-weight: 400;
+    line-height: 245%;
+    letter-spacing: 0.4px;
+}
+.story-cake {
+    position: absolute;
+    z-index: -1;
+    width: calc(235.62vw/14.4);
+    top: 30%;
+    left: 45%;
+    --invert-val: 0%;
+    filter: invert(var(--invert-val));
+    will-change: filter, transform;
+}
+
+.story-cake.flicker {
+    animation: horrorFlicker 0.15s ease-out 1 forwards;
+}
+
+@keyframes horrorFlicker {
+    0%   { filter: invert(var(--invert-val)) brightness(1); transform: translate(0); }
+    30%  { filter: invert(100%) brightness(2) contrast(1.5); transform: translate(-4px, 2px) skewX(3deg); }
+    60%  { filter: invert(0%) brightness(0.3); transform: translate(5px, -3px) skewX(-3deg); }
+    100% { filter: invert(var(--invert-val)) brightness(1); transform: translate(0); }
+}
+
+/*==============================
+=============Profile===============*/
+.profile {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.profile-bg {
+    width: 100%;
+}
+.profile-bg-sp {
+    display: none;
+}
+.profile-content-wrapper {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc(58vw/14.4);
+    top: 25%;
+}
+.profile-box {
+    width: calc(544vw/14.4);
+    opacity: 0;
+    transform: translateY(30px);
+    will-change: transform, opacity;
+}
+.profile-box-sp {
+    display: none;
+}
+.profile-box.animate-ghost {
+    animation: ghostFadeUp 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+#profile-mai.animate-ghost {
+    animation-delay: 0.5s;
+}
+
+@keyframes ghostFadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*==============================
+=============Comics===============*/
+.comics {
+    width: 100%;
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 14px;
+}
+.comics-title {
+    color: #FFF;
+    text-align: center;
+    font-family: "Emblema One";
+    font-size: clamp(16px,calc(40vw/14.4),80px);
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+.comics-pic {
+    width: calc(720vw/14.4);
+}
+.comics-continue-text {
+    color: #FFF;
+    text-align: center;
+    font-family: "Noto Sans";
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 153.125%;
+    letter-spacing: 0.2em;
+}
+/*==============================
+=============Footer===============*/
+.footer {
+    width: 100%;
+    margin-top: 100px;
+}
+.footer-img {
+    width: 100%;
+}
+
+/*===========================
+=======Responsive==========*/
+@media screen and (max-width:800px) {
+    .top-blood.blood-left {
+        width: calc(120vw/4.02);
+        top: 10%;
+        left: 5%;
+    }
+    .top-blood.blood-right {
+        width: calc(170vw/4.02);
+        right: 6%;
+        top: 68%;
+    }
+    .top-bg {
+        display: none;
+    }
+    .top-bg-sp {
+        display: inline-block;
+        width: 100%;
+    }
+    .back-btn img {
+        width: calc(57.61vw/4.02);
+    }
+    .story {
+        aspect-ratio: 402 / 523;
+    }
+    .story-title {
+       font-size: calc(36vw/4.02);
+    }
+    .story-text {
+        display: block;
+        width: calc(300vw/4.02);
+        font-size: calc(13vw/4.02);
+        line-height: 306.25%;
+    }
+    .story-cake {
+        width: calc(170.28vw/4.02);
+        top: 30%;
+        left: 35%;
+    }
+    /* ======== 针对要求优化 Profile 的移动端样式 ======== */
+    .profile {
+        display: grid; /* 使用 Grid 让背景和内容在同一个空间重叠 */
+        align-items: start;
+    }
+    .profile-bg {
+        display: none;
+    }
+    .profile-bg-sp {
+        display: block;
+        width: 100%;
+        grid-area: 1 / 1; /* 强制放置在网格同一区域 */
+        position: sticky; /* 开启吸顶固定 */
+        top: 0;           /* 固定在视窗顶部 */
+        z-index: 1;
+        align-self: start;
+    }
+    .profile-content-wrapper {
+        grid-area: 1 / 1; /* 与背景层叠 */
+        position: relative; /* 恢复标准流，用来撑开整个 profile 容器的高度 */
+        top: auto;
+        flex-direction: column;
+        align-items: center;
+        gap: 120px;
+        z-index: 2;
+        padding-top: 50vh; /* 让手机端往下滚半屏后，人物图片才开始出现 */
+        padding-bottom: 100px; /* 完美控制点：此处的 100px 正好让容器在 mai 底部往下 100px 处结束，从而带动背景解除 fixed 划走 */
+    }
+    .profile-box {
+        display: none;
+    }
+    .profile-box-sp {
+        display: block;
+        width: calc(300vw/4.02);
+        /* --- 增加自然的 fadeUp 基础初始状态 --- */
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    /* 触发 JS 时的 Class */
+    .profile-box-sp.fade-up {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    /* ============================================== */
+
+    .comics-pic {
+        width: calc(317.47vw/4.02);
+    }
+}
