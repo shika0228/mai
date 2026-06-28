@@ -114,6 +114,7 @@ gsap.fromTo(".interview-content",
 // ==========================================
 // 原有的 Particles 粒子特效代码保留
 // ==========================================
+if (typeof particlesJS === "function") {
 particlesJS("particles-js", {
   "particles": {
     "number": {
@@ -190,3 +191,4 @@ particlesJS("particles-js", {
   },
   "retina_detect": true
 });
+}
