@@ -1,8 +1,9 @@
 // 原本的粒子效果配置保持不变
-particlesJS("particles-js", {
+if (typeof particlesJS === "function") {
+  particlesJS("particles-js", {
     "particles": {
       "number": { "value": 18, "density": { "enable": true, "value_area": 1000 } },
-      "shape": { "type": "image", "image": { "src": "../img-dnd/leaf.webp", "width":50, "height":50 } },
+      "shape": { "type": "image", "image": { "src": "img-dnd/leaf.webp", "width":50, "height":50 } },
       "opacity": { "value": 0.6, "random": true, "anim": { "enable": true, "speed": 0.5, "opacity_min": 0.2, "sync": false } },
       "size": { "value": 15, "random": true, "anim": { "enable": false } },
       "line_linked": { "enable": false },
@@ -15,7 +16,8 @@ particlesJS("particles-js", {
     },
     "retina_detect": true
   });
-   
+}
+
   // =============== 以下为新增的视窗滚动效果逻辑 ===============
   document.addEventListener("DOMContentLoaded", () => {
       // 注册滚动插件
