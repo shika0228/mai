@@ -44,6 +44,39 @@ body{
     width:100%;
     overflow:hidden;
     aspect-ratio: 1440 / 76;
+    display:flex;
+    align-items:center;
+}
+.scroll-icon-track{
+    display:flex;
+    width:max-content;
+    animation: scrollIconLoop 22s linear infinite;
+}
+.scroll-icon-group{
+    display:flex;
+    align-items:center;
+    flex-shrink:0;
+    gap:calc(40vw/14.4);
+    padding-right:calc(40vw/14.4);
+}
+.scroll-icon-group img{
+    display:block;
+    height:calc(54vw/14.4);
+    width:auto;
+    flex-shrink:0;
+}
+@keyframes scrollIconLoop {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .scroll-icon-track {
+        animation: none;
+    }
 }
 /*--------story---------*/
 .story{
