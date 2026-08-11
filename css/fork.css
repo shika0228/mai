@@ -59,8 +59,8 @@ body {
 
 .fork-loader__stage {
     position: relative;
-    width: min(18vw, 215px);
-    min-width: 130px;
+    width: min(36vw, 430px);
+    min-width: 260px;
     aspect-ratio: 1173 / 1800;
     filter: drop-shadow(0 22px 36px rgba(0, 0, 0, 0.72));
     animation: forkLoaderBreath 2.4s ease-in-out infinite;
@@ -407,8 +407,8 @@ body {
 =======Responsive==========*/
 @media screen and (max-width:800px) {
     .fork-loader__stage {
-        width: min(37vw, 180px);
-        min-width: 130px;
+        width: min(74vw, 360px);
+        min-width: 220px;
     }
 
     .top-blood.blood-left {
