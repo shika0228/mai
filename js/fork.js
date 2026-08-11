@@ -11,11 +11,14 @@ document.addEventListener("DOMContentLoaded", function() {
             loaderHidden = true;
             const remaining = Math.max(0, 1650 - (performance.now() - startedAt));
             window.setTimeout(() => {
-                loader.classList.add('is-hidden');
+                loader.classList.add('is-ending');
                 window.setTimeout(() => {
-                    loader.remove();
-                    announceLoaderHidden();
-                }, 1050);
+                    loader.classList.add('is-hidden');
+                    window.setTimeout(() => {
+                        loader.remove();
+                        announceLoaderHidden();
+                    }, 1050);
+                }, 520);
             }, remaining);
         };
 
