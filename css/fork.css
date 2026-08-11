@@ -88,6 +88,19 @@ body {
     animation: forkLoaderDiff 1.55s steps(1, end) infinite;
 }
 
+.fork-loader.is-ending .fork-loader__art--base {
+    opacity: 0;
+}
+
+.fork-loader.is-ending .fork-loader__art--diff {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+    transform: translate3d(0, 0, 0);
+    mix-blend-mode: normal;
+    filter: none;
+    animation: none;
+}
+
 @keyframes forkLoaderDiff {
     0%, 30%, 48%, 72%, 100% {
         opacity: 0;
