@@ -1,0 +1,335 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+body{
+    height:100%;
+}
+#particles-js{
+    position:fixed;
+    z-index:-1;
+    width: 100%;
+    height:100%;
+    background-color:#18172a;
+}
+/*============================
+=============header============*/
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding-left: calc(190vw/14.4);
+    padding-top:4%;
+}
+.header.scrolled {
+    background: rgba(105, 102, 97, 0.568);
+    backdrop-filter: blur(8px);
+    padding-top:0;
+}
+.back-btn{
+text-decoration:none;
+   color: #FFF;
+font-family: "Noto Sans SC";
+font-size: clamp(13px,calc(16vw/14.4),48px);
+font-weight: 500;
+letter-spacing:0.2em;
+transition:opacity 0.3s ease-in-out,scale 0.3s ease-in-out ;
+}
+.back-btn:hover{
+    opacity:0.8;
+    scale:0.95;
+}
+.back-btn span{
+    font-size:32px;
+}
+
+/*============================
+=============top============*/
+.top{
+    width:100%;
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.top-bg{
+    width:calc(1080vw/14.4);
+}
+.top-bg-sp{
+    display:none;
+}
+/*============================
+=============about============*/
+.about{
+    width:calc(1079vw/14.4);
+    aspect-ratio: 1079 / 559;
+    background-image:url('../img-jk/about-bg.webp');
+    background-position:center;
+    background-repeat: no-repeat;
+    background-size:contain;
+    margin:0 auto;
+    margin-top:6%;
+    display:flex;
+    gap:calc(21vw/14.4);
+    align-items:center;
+    justify-content:center;
+    /* --- 新增：用于滚动层叠与定位 --- */
+    position: relative;
+    z-index: 1;
+}
+.about-profile{
+    margin-top:5%;
+    width:calc(431vw/14.4);
+}
+.about-profile-sp{
+    display:none;
+}
+/*============================
+=============chatroom============*/
+.chatroom{
+    width:calc(1079vw/14.4);
+    aspect-ratio: 1079 / 559;
+    background-image:url('../img-jk/chatroom-bg.webp');
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:contain;
+    margin:0 auto;
+    margin-top:6%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    /* --- 新增：保证在about上方，并准备3D变换 --- */
+    position: relative;
+    z-index: 5;
+    will-change: transform;
+}
+.chatroom-content-wrapper{
+    width:calc(435.13vw/14.4);
+    aspect-ratio: 435.13 / 444;
+    display:flex;
+    flex-direction:column;
+    justify-content: space-around;
+    align-items: center;
+    margin-top:3%;
+}
+/* --- 新增：初始隐藏聊天记录，由JS控制出现 --- */
+#chat-1, #chat-2, #chat-3, #chat-4 {
+    opacity: 0;
+}
+#chat-1{
+    width:calc(286.13vw/14.4);
+}
+#chat-2{
+    width:calc(344.13vw/14.4);
+}
+#chat-3{
+    width:calc(275vw/14.4);
+}
+#chat-4{
+    width:calc(309vw/14.4);
+}
+/*============================
+=============phonechat============*/
+.phonechat{
+    width:100%;
+    aspect-ratio: 1440 / 1089;
+    background-image:url('../img-jk/phone-chat-bg.webp');
+    background-position:center;
+    background-size:cover;
+    background-repeat: no-repeat;
+    margin-top:6%;
+    display:flex;
+}
+.phone-deco-wrapper{
+    margin:0 auto;
+    position:relative;
+}
+.phone-bg{
+    width:calc(456vw/14.4);
+}
+.apple-pie{
+    position:absolute;
+    z-index:3;
+    width:calc(280vw/14.4);
+    top:80%;
+    left:70%;
+}
+.phone-chat-content-wrapper{
+    position:absolute;
+    z-index:2;
+    width:calc(250vw/14.4);
+    aspect-ratio:250 / 684;
+    top:20%;
+    left:23%;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.interview-content{
+    width:calc(249vw/14.4);
+    /* --- 新增：初始隐藏气泡，等待JS触发动画 --- */
+    opacity: 0;
+}
+
+/*==================================================
+ギャラリーのためのcss
+===================================*/
+.gallery-wrapper{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:calc(64vw/14.4);
+}
+.gallery-title{
+    width:calc(240vw/14.4);
+}
+.gallery {
+    width:80%;
+    columns:4;
+    padding:calc(32vw/14.4);
+    margin: 0;
+}
+
+.gallery li {
+    margin-bottom:calc(32vw/14.4);
+    list-style: none;
+}
+
+.gallery img {
+    width: 100%;
+    height: auto;
+    vertical-align: bottom;
+}
+@media only screen and (max-width: 900px) {
+    .gallery {
+        columns: 3;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .gallery {
+        columns: 2;
+    }
+}
+/*====================================
+==============footer==================*/
+.footer{
+    width:100%;
+    aspect-ratio:1440 / 409;
+    margin:0;
+    padding:0;
+}
+.footer img{
+    width:100%;
+}
+
+/*============================
+=======Respondsive==========*/
+@media screen and (max-width:800px) {
+.header{
+  padding-left: calc(30vw/4.02);
+
+}
+.back-btn{
+    font-size:calc(16vw/4.02);
+}
+.back-btn span{
+    font-size:calc(32vw/4.02);
+}
+.top{
+    height:auto;
+    aspect-ratio:402 / 661;
+}
+.top-bg{
+   display:none;
+}
+.top-bg-sp{
+    display:inline-block;
+    width:calc(353.09vw/4.02);
+}
+.about{
+    width:calc(349vw/4.02);
+    aspect-ratio: 349 / 817;
+    background-image:url('../img-jk/about-bg-sp.webp');
+    margin-top:6%;
+    display:flex;
+    flex-direction:column;
+    gap:calc(47vw/8.17);
+}
+.about-profile{
+    display:none;
+}
+.about-profile-sp{
+    display: inline-block;
+    width:calc(299vw/4.02);
+}
+.chatroom{
+    width:calc(349vw/4.02);
+    aspect-ratio: 349 / 522;
+    background-image:url('../img-jk/chatroom-bg-sp.webp');
+    margin-top:6%;
+}
+.phone-chat-content-wrapper{
+    position:absolute;
+    z-index:2;
+    width:calc(310vw/4.02);
+    aspect-ratio:310 / 316;
+    top:20%;
+    left:23%;
+    gap:30px;
+}
+.chatroom-content-wrapper{
+    width:calc(310vw/4.02);
+    aspect-ratio:310 / 400;
+    display:flex;
+    flex-direction:column;
+    justify-content: space-around;
+    align-items: center;
+    margin-top:3%;
+}
+#chat-1{
+    width:calc(286.13vw/4.5);
+}
+#chat-2{
+    width:calc(344.13vw/4.5);
+}
+#chat-3{
+    width:calc(275vw/4.5);
+}
+#chat-4{
+    width:calc(309vw/4.5);
+}
+.phonechat{
+    width:100%;
+    aspect-ratio: 402 / 850;
+     margin-top:15%;
+}
+.phone-bg{
+    width:calc(362.73vw/4.02);
+}
+.phone-chat-content-wrapper{
+    width:calc(199vw/4.02);
+    aspect-ratio:199 / 543;
+    top:20%;
+    left:23%;
+    gap:13px;
+}
+.interview-content{
+    width:calc(199vw/4.02);
+}
+.apple-pie{
+    width:calc(138.86vw/4.02);
+    top:80%;
+    left:68%;
+}
+}

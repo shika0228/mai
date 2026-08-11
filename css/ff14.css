@@ -1,0 +1,376 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #F1EBE2;
+    overflow-x: hidden;
+}
+
+/*==============================
+==========Header (重叠 & 固定)=====*/
+.header {
+    position: fixed;
+    /* 固定在窗口顶部 */
+    top: 0;
+    left: 0;
+    z-index: 999;
+    /* 确保在最上层 */
+    width: 100%;
+    aspect-ratio: 1440 / 60;
+    display: flex;
+    align-items: center;
+    padding-left: calc(120vw/14.4);
+    gap: calc(305vw/14.4);
+    background: rgba(241, 235, 226, 0);
+    /* 初始透明实现重叠 */
+    transition: background 0.4s ease;
+    padding-top: 2.5%;
+}
+
+/* 滚动后稍微加深背景色，方便阅读 */
+.header.scrolled {
+    background: rgba(241, 235, 226, 0.568);
+    backdrop-filter: blur(8px);
+    padding-top: 0;
+}
+
+.back-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+.back-btn img {
+    width: calc(101vw/14.4);
+    height: auto;
+    object-fit: contain;
+    /* 修复变形 */
+    flex-shrink: 0;
+}
+
+.back-btn p {
+    color: #222;
+    font-family: "Noto Sans SC";
+    font-size: clamp(13px, calc(14vw/14.4), 28px);
+    font-weight: 500;
+}
+
+.header>p {
+    color: #222;
+    font-family: 'Noto Serif SC';
+    font-size: clamp(16px, calc(24vw/14.4), 48px);
+    font-weight: 700;
+}
+
+/*==============================
+==========TOP==================*/
+.top {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1440 / 761;
+}
+
+.top-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.top-bg-sp {
+    display: none;
+}
+
+.top-text {
+    position: absolute;
+    z-index: 2;
+    width: calc(486vw/14.4);
+    left: 5%;
+    top: 46%;
+    opacity: 0;
+    transform: translateX(-40px);
+    animation: softSlideIn 1.8s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
+}
+
+.top-text-sp {
+    display: none;
+}
+
+@keyframes softSlideIn {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/*==============================
+==========About (Fade Up效果)=====*/
+.about {
+    width: 100%;
+    padding: 8% 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.about-title {
+    width: clamp(313px, calc(849vw/14.4), 1698px);
+}
+
+.about-info-wrapper {
+    position: relative;
+}
+
+.about-info-bg {
+    width: calc(1198vw/14.4);
+    box-shadow: 0 10px 40px rgba(133, 92, 82, 0.15);
+}
+
+.about-info-bg-sp {
+    display: none;
+}
+
+.about-info {
+    position: absolute;
+    z-index: 2;
+    width: calc(390vw/14.4);
+    left: 6.2%;
+    top: 15%;
+
+    /* 动画初始状态：透明且靠下 */
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1.5s ease, transform 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about-info-sp {
+    display: none;
+}
+
+/* 激活状态 */
+.about-info.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/*==============================
+==========Interview=============*/
+.interview {
+    width: 100%;
+    position: relative;
+}
+
+.interview-bg {
+    width: 100%;
+}
+ .interview-bg-sp{
+        display:none;
+    }
+.interview-content-wrapper {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(621vw/14.4);
+    aspect-ratio: 621 / 731;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url('../img-ff14/interview-paper.webp');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.interview-content {
+    width: calc(500vw/14.4);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.interview-content.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 顺序延迟 */
+.interview-content:nth-child(1) {
+    transition-delay: 0.2s;
+}
+
+.interview-content:nth-child(2) {
+    transition-delay: 0.4s;
+}
+
+.interview-content:nth-child(3) {
+    transition-delay: 0.6s;
+}
+
+.interview-content:nth-child(4) {
+    transition-delay: 0.8s;
+}
+/*==================================================
+ギャラリーのためのcss
+===================================*/
+.gallery-wrapper{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:calc(64vw/14.4);
+}
+.gallery-title{
+    width:calc(849vw/14.4);
+}
+.gallery {
+    width:80%;
+    columns:4;
+    padding:calc(32vw/14.4);
+    margin: 0;
+}
+
+.gallery li {
+    margin-bottom:calc(32vw/14.4);
+    list-style: none;
+}
+
+.gallery img {
+    width: 100%;
+    height: auto;
+    vertical-align: bottom;
+}
+@media only screen and (max-width: 900px) {
+    .gallery {
+        columns: 3;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .gallery {
+        columns: 2;
+    }
+}
+.footer {
+    width: 100%;
+    aspect-ratio: 1440 / 360;
+    background: url('../img-ff14/footer.webp') center/cover;
+}
+
+/*============================
+=========Respondsive=========*/
+@media screen and (max-width:1000px) {}
+
+@media screen and (max-width:800px) {
+    .header {
+        width: 100%;
+        aspect-ratio: 361 / 77;
+        display: flex;
+        align-items: center;
+        padding-left: calc(8vw/3.61);
+        gap: calc(32vw/3.61);
+        padding-top: 2.5%;
+    }
+
+    .back-btn img {
+        width: calc(52.56vw/3.61);
+    }
+
+    .back-btn p {
+        font-size: calc(13vw/3.61);
+    }
+
+    .header>p {
+        font-size: calc(16vw/3.61);
+    }
+
+    .top {
+        aspect-ratio: 402 / 743;
+    }
+
+    .top-bg {
+        display: none;
+    }
+
+    .top-bg-sp {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .top-text {
+        display: none;
+    }
+
+    .top-text-sp {
+        display: inline-block;
+        position: absolute;
+        z-index: 2;
+        width: calc(278vw/3.61);
+        left: 13%;
+        top: 60%;
+        opacity: 0;
+        transform: translateY(60px);
+        animation: softSlideIn 1.8s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
+    }
+    .about{
+     padding: 13% 0;
+    }
+    .about-title {
+    width:calc(313vw/3.61);
+     }
+    .about-info-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 64px;
+    }
+
+    .about-info-bg {
+        display: none;
+    }
+
+    .about-info {
+        display: none;
+    }
+
+    .about-info-bg-sp {
+        display: inline-block;
+        width: calc(322.1vw/3.61);
+        transform: translateY(60px);
+        animation: softSlideIn 1.8s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
+    }
+
+    .about-info-sp {
+        display: inline-block;
+        width: calc(322.1vw/3.61);
+        transform: translateY(60px);
+        animation: softSlideIn 1.8s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
+    }
+    .interview-bg{
+        display: none;
+    }
+    .interview-bg-sp{
+        display:inline-block;
+        width:100%;
+    }
+    .interview-content-wrapper {
+    position: absolute;
+    top: 20%;
+    left: 8%;
+    transform: none;
+    width: calc(306vw/3.61);
+    aspect-ratio: 306 / 372;
+}
+    .interview-content {
+    width: calc(260vw/3.61);}
+}
