@@ -38,7 +38,7 @@
 .menu-wrapper li {
     list-style: none;
     transition: transform 0.3s ease, opacity 0.3s ease;
-    margin: calc(44vh/8.11);
+    margin: clamp(22px, calc(30vh / 8.11), 44px);
 }
 
 .menu-wrapper li:hover {

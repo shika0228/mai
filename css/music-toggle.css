@@ -1,0 +1,41 @@
+.page-music-toggle {
+    position: fixed;
+    top: 26px;
+    right: 26px;
+    top: max(26px, calc(env(safe-area-inset-top) + 10px));
+    right: max(26px, calc(env(safe-area-inset-right) + 10px));
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    line-height: 0;
+    z-index: 9999;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.page-music-toggle img {
+    display: block;
+    width: 32px;
+    height: 32px;
+    pointer-events: none;
+    transform-origin: center;
+}
+
+.page-music-toggle.is-playing img {
+    animation: page-music-spin 2.4s linear infinite;
+}
+
+.page-music-toggle:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.9);
+    outline-offset: 4px;
+    border-radius: 50%;
+}
+
+@keyframes page-music-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
