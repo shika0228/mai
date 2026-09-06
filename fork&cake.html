@@ -11,9 +11,13 @@
         href="https://fonts.googleapis.com/css2?family=Emblema+One&family=Noto+Sans+SC:wght@100..900&family=Noto+Serif+SC:wght@200..900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/fork.css">
+    <link rel="stylesheet" href="css/music-toggle.css">
 </head>
 
 <body>
+    <button class="page-music-toggle" type="button" data-audio-src="img-fork&amp;cake/fork&amp;cake.mp3" aria-label="播放音乐" aria-pressed="false">
+        <img src="img-home/music_btn.webp" alt="">
+    </button>
     <div class="fork-loader" id="fork-loader" aria-hidden="true">
         <div class="fork-loader__stage">
             <img class="fork-loader__art fork-loader__art--base" src="img-fork&cake/fork-loading-1.webp" width="1173" height="1800" alt="">
@@ -82,6 +86,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.10.0/js/lightbox.min.js"></script>
     <script src="js/fork.js"></script>
+    <script src="js/music-toggle.js"></script>
 </body>
 
 </html>

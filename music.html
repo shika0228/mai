@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>music</title>
+    <link rel="icon" href="muisc_content/music_page_logo.webp" type="image/webp">
+    <link rel="shortcut icon" href="muisc_content/music_page_logo.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Emblema+One&family=Noto+Sans+SC:wght@100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/music.css">
+</head>
+<body>
+    <div id="particles-js"></div>
+    <a class="music_logo_link" href="index.html" aria-label="back to home">
+        <img class="music_logo" src="muisc_content/music_page_logo.webp" alt="MAI Thancred">
+    </a>
+
+    <nav class="menu" aria-label="site menu">
+        <ul class="menu-wrapper">
+            <li>
+                <a href="index.html#top">
+                    <h2>Home</h2>
+                    <p>主页</p>
+                </a>
+            </li>
+            <li>
+                <a href="index.html#about">
+                    <h2>About us</h2>
+                    <p>关于我们</p>
+                </a>
+            </li>
+            <li>
+                <a href="index.html#world">
+                    <h2>The Worlds</h2>
+                    <p>世界观</p>
+                </a>
+            </li>
+            <li>
+                <a href="index.html#gallery-wrapper">
+                    <h2>Gallery</h2>
+                    <p>画廊</p>
+                </a>
+            </li>
+            <li>
+                <a href="music.html">
+                    <h2>Music</h2>
+                    <p>音乐</p>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <button class="hamburger show" id="hamburger" type="button" aria-label="menu" aria-expanded="false">
+        <span class="hamburger-icon-img">
+            <img src="img-home/menu-btn-before.webp" class="btn-before" alt="">
+            <img src="img-home/menu-btn-after.webp" class="btn-after" alt="">
+        </span>
+        <span class="hamburger-text">menu</span>
+    </button>
+
+    <div class="playlist_btn_wrapper" aria-label="Playlist">
+        <h2>PlayList</h2>
+        <button class="music_btn active" type="button" data-track="bakamitai">
+            バカみたい
+        </button>
+        <button class="music_btn" type="button" data-track="honnon">
+            本能
+        </button>
+    </div>
+
+    <main class="music_main">
+        <section class="music_player" aria-label="music player">
+            <div class="record_wrapper">
+                <button class="record_toggle" type="button" aria-label="play or pause">
+                    <img class="record_img" src="muisc_content/bakamitai.webp" alt="">
+                </button>
+            </div>
+
+            <div class="track_info">
+                <h1 class="track_title" id="trackTitle">バカみたい</h1>
+                <div class="progress_wrapper">
+                    <input class="progress_bar" id="progressBar" type="range" min="0" max="100" step="0.1" value="0" aria-label="song progress">
+                    <div class="time_row">
+                        <span id="currentTime">00:00</span>
+                        <span id="durationTime">-00:00</span>
+                    </div>
+                </div>
+
+                <div class="control_bar">
+                    <button class="control_btn skip_btn prev_btn" id="prevBtn" type="button" aria-label="previous song">
+                        <span class="skip_icon prev_icon" aria-hidden="true"><span></span></span>
+                    </button>
+                    <button class="control_btn play_btn" id="playBtn" type="button" aria-label="play">
+                        <span class="play_icon" aria-hidden="true"></span>
+                    </button>
+                    <button class="control_btn skip_btn next_btn" id="nextBtn" type="button" aria-label="next song">
+                        <span class="skip_icon next_icon" aria-hidden="true"><span></span></span>
+                    </button>
+                </div>
+            </div>
+
+            <section class="lyrics_panel" aria-label="lyrics">
+                <div class="lyrics_inner" id="lyrics">
+                    <p class="lyrics_status">Loading lyrics...</p>
+                </div>
+            </section>
+
+            <audio id="audioPlayer" preload="metadata" src="muisc_content/bakamitai.m4a"></audio>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="js/music-lyrics.js"></script>
+    <script src="js/music.js"></script>
+</body>
+</html>
