@@ -330,6 +330,9 @@ body{
 }
 
 @media screen and (max-width:800px){
+    body .page-music-toggle{
+        top:max(68px, calc(env(safe-area-inset-top) + 20px));
+    }
     .story-contents{
         flex-direction:column;
     }
